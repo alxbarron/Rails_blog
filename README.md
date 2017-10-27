@@ -1,4 +1,4 @@
-# Ruby on Rails
+# Ruby on Rails Blog
 
 ### Crear app en Rails e instalar  dependencias "Ruby GEMs"
     rails new appName
@@ -91,5 +91,3 @@
 
 ### Crear un archivo de migración con todo el template CRUD
     rails generate scaffold ModelName attribute:type attribute_2:type2
-
-
