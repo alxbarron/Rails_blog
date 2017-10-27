@@ -38,21 +38,18 @@
         rake db:rollback
 
 ### Crear registros en BD. Existen 3 formas
-1. 
- 
-        var = Model.new
-        var.atribute1 = "valor1"
-        var.atribute2 = "valor2"
-        var.save
+##### 1
+    var = Model.new
+    var.atribute1 = "valor1"
+    var.atribute2 = "valor2"
+    var.save
 
-2. 
+##### 2
+    var = Model.new(atribute1: "valor1", atribute2: "valor2")
+    var.save
 
-        var = Model.new(atribute1: "valor1", atribute2: "valor2")
-        var.save
-
-3.
-
-        Model.create(atribute1: "valor1", atribute2: "valor2")
+##### 3
+    Model.create(atribute1: "valor1", atribute2: "valor2")
 
 ## Editar, Borrar y Validaciones
 
