@@ -19,11 +19,11 @@
 ## Models y migraciones
 
 ### Crear migración
-    rails generate migration create_modelPluralName atribute:type atribute2:type2
+    rails generate migration create_modelPluralName attribute_1:type attribute_2:type2
 
 ### Modificar una tabla desde una migración
     rails generate migration add_camponuevo_to_nombretabla
-    
+
 - En el archivo de migración generado se agrega el/los campos definiendo la tabla, el nombre del campo y el tipo de dato:
 
         def change
@@ -41,24 +41,55 @@
 *1.*
 
     var = Model.new
-    var.atribute1 = "valor1"
-    var.atribute2 = "valor2"
+    var.attribute_1 = "valor1"
+    var.attribute_2 = "valor2"
     var.save
 
 *2.*
 
-    var = Model.new(atribute1: "valor1", atribute2: "valor2")
+    var = Model.new(attribute_1: "valor1", attribute_2: "valor2")
     var.save
 
 *3.*
 
-    Model.create(atribute1: "valor1", atribute2: "valor2")
+    Model.create(attribute_1: "valor1", attribute_2: "valor2")
 
 ## Editar, Borrar y Validaciones
 
-### Buscar un registro por ID de tabla
+### Busca en modelo un registro por ID
     var = Model.find(id)
 
+### Edita los atributos del registro
+    var.attribute_1 = "Nuevo valor"
+    var.attribute_2 = "Nuevo valor"
+    var.save
+
+### Borrar el registro
+    var.destroy
+
+### Agregar validación a un modelo
+    class ModelName < ActiveRecord::Base
+      validates :attribute_1, presence: true, length: { minimum: 3, maximum: 50 }
+      validates :attribute_2, presence: true, length: { minimum: 3, maximum: 50 }
+    end
+
+### Acceder a errores por Validaciones
+- Ver representción del objeto
+
+      var.errors
+
+- Validar si hay errores. Boolean
+
+      var.errors.any?
+
+- Obtener todos los mensajes de error
+
+      var.errors.full_messages
+
+### Obtener todos los registros de un modelo
+    Model.all
+
 ### Crear un archivo de migración con todo el template CRUD
-    rails generate scaffold ModelName atribute:type atribute2:type2
+    rails generate scaffold ModelName attribute:type attribute_2:type2
+
 
