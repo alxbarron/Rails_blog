@@ -34,28 +34,31 @@
         end
 
 ### Ejecutar los archivos de migración y hacer rollback
-        rake db:migrate
-        rake db:rollback
+    rake db:migrate
+    rake db:rollback
 
 ### Crear registros en BD. Existen 3 formas
-##### 1
+*1.*
+
     var = Model.new
     var.atribute1 = "valor1"
     var.atribute2 = "valor2"
     var.save
 
-##### 2
+*2.*
+
     var = Model.new(atribute1: "valor1", atribute2: "valor2")
     var.save
 
-##### 3
+*3.*
+
     Model.create(atribute1: "valor1", atribute2: "valor2")
 
 ## Editar, Borrar y Validaciones
 
 ### Buscar un registro por ID de tabla
-        var = Model.find(id)
+    var = Model.find(id)
 
 ### Crear un archivo de migración con todo el template CRUD
-        rails generate scaffold ModelName atribute:type atribute2:type2
+    rails generate scaffold ModelName atribute:type atribute2:type2
 
