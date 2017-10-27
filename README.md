@@ -24,6 +24,7 @@
 ### Modificar una tabla desde una migración
     rails generate migration add_camponuevo_to_nombretabla
 - En el archivo de migración generado se agrega el/los campos definiendo la tabla, el nombre del campo y el tipo de dato:
+
     ```
     def change
       add_column :table, :column1, :type
