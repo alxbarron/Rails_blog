@@ -91,3 +91,65 @@
 
 ### Crear un archivo de migración con todo el template CRUD
     rails generate scaffold ModelName attribute:type attribute_2:type2
+
+## Crear, Editar con Validaciones y errores
+
+### Agregar todas las rutas del CRUD
+*routes.rb*
+
+    resources :modelPluralName
+
+### Crear acciones en el controlador
+*modelsController*
+
+    def index | new | create | edit | update | show | destroy
+      #Index
+      @variables = Model.all
+      #New
+      @variable = Model.new
+      #Create
+      @variable = Model.new(model_params)
+      @variable.save
+      redirect_to model_path(@variable)
+      #Edit
+      @variable = Model.find(params[:id])
+      #Update
+      @variable = Model.find(params[:id])
+      @variable.update(model_params)
+      redirect_to model_path(@variable)
+      #Show
+      @variable = Model.find(params[:id])
+    end
+
+    private
+      def model_params
+        params.require(:model).permit(:attribute1, :atribute2)
+      end
+
+### Crear vista para formulario
+*vista/new.html.erb|vista/edit.html.erb*
+    #Si hay errores los itera
+    <% if @variable.errors.any? %>
+    <h3>The following errors prevented the article from getting created</h3>
+      <ul>
+      <% @variable.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    #Formulario con inputs mapeados del modelo
+    <%= form_for @variable do |f| %>
+      <p>
+      <%= f.label :title %><br/>
+      <%= f.text_field :title %>
+      </p>
+
+      <p>
+      <%= f.label :description %><br/>
+      <%= f.text_area :description %>
+      </p>
+
+      <p>
+      <%= f.submit %>
+      </p>
+    <% end %>
