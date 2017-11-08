@@ -127,7 +127,7 @@
       end
 
 ### Crear vista para formulario
-*vista/new.html.erb|vista/edit.html.erb*
+*vista/new.html.erb | vista/edit.html.erb*
 
     #Si hay errores los itera
     <% if @variable.errors.any? %>
